@@ -1,3 +1,13 @@
+# Test 1
+
+## Cara Menjalankan
+1. Clone proyek ini / unduh sebagai zip
+2. Extract jika unduh sebagai zip
+3. Buka repo di local melalui terminal (directory: test1)
+4. Gunakan [node.js](https://nodejs.org/en)
+5. Jalankan `node <filename.js>`. Contoh: `node task1.js`
+
+---
 
 # Test 2
 
@@ -20,7 +30,7 @@ Dideploy melalui netlify dan dapat diakses di [https://tst-techwave.netlify.app]
 
 ## Local Dev
 1. Clone repo ini
-2. Buka repo di local melalui terminal
+2. Buka repo di local melalui terminal (directory: test2)
 3. Gunakan node.js minimal v22.3.0
 4. Install dependencies: `npm install`
 5. Tunggu hingga proses selesai
