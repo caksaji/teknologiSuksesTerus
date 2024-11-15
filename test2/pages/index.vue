@@ -12,14 +12,11 @@
       <div class="container pt-12">
         <div class="flex flex-col gap-8 items-end justify-between sm:flex-row">
           <div>
-            <div data-aos="fade-right" data-aos-delay="400" class="flex items-center gap-2">
-              <div class="flex-shrink-0 h-px w-full max-w-8 bg-white" />
-              <span class="flex-shrink-0">Singkatnya, anda bisa</span>
-            </div>
+            <SectionTitle data-aos="fade-right" data-aos-delay="400" text="Singkatnya, anda bisa" type="line" color="white" />
             <SectionTitle data-aos="fade-up" data-aos-delay="550" text="Memantau Keuntungan dan Kesediaan Bisnis Anda Secara Real-Time" class="max-w-4xl" />
           </div>
           <div data-aos="fade-right" data-aos-delay="850" class="flex">
-            <SpButton color="white" size="lg" border round @click="sectionService.scrollIntoView()">
+            <SpButton color="white" size="lg" border round @click="sectionPackage.scrollIntoView()">
               Cari tahu
             </SpButton>
             <SpButton
@@ -28,7 +25,7 @@
               size="lg"
               icon-only
               round
-              @click="sectionService.scrollIntoView()"
+              @click="sectionPackage.scrollIntoView()"
             >
               <template #icon>
                 <IconSvg name="arrow-right" class="h-5 w-5" />
@@ -99,14 +96,11 @@
         </div>
       </div>
     </div>
-    <div ref="sectionService" class="section service bg-gradient-to-br from-white via-prime-200 to-gray-100">
+    <div ref="sectionPackage" class="section service bg-gradient-to-br from-white via-prime-200 to-gray-100">
       <div class="container relative py-24">
         <OrnamentDotCircle color="gray-900" class="absolute top-12 right-0 transform translate-x-1/3 opacity-10" />
         <div class="relative">
-          <div data-aos="fade-right" class="flex items-center gap-2">
-            <div class="flex-shrink-0 h-px w-full max-w-8 bg-gray-900" />
-            <span class="flex-shrink-0">Selanjutnya,</span>
-          </div>
+          <SectionTitle data-aos="fade-right" text="Kami menawarkan" type="line" />
           <SectionTitle data-aos="fade-up" data-aos-delay="300" text="Inilah Solusi yang Kami Tawarkan atas Masalah Anda" class="max-w-6xl"/>
           <div data-aos="fade-up" class="flex gap-4 flex-wrap w-full pt-12 md:flex-nowrap sm:gap-0">
             <div v-for="(s, i) in serviceStore.all" :key="i" class="w-full transform duration-300 group sm:w-1/2 md:w-1/4 md:hover:w-2/4">
@@ -171,10 +165,7 @@
       <div class="container relative py-24">
         <div class="absolute top-12 -left-1/4 h-[57rem] w-[57rem] border-4 border-prime-600 rounded-full opacity-50 blur-sm sm:top-20 sm:-left-1/2 md:-left-1/3" />
         <div class="relative">
-          <div data-aos="fade-right" class="flex items-center gap-2">
-            <div class="flex-shrink-0 h-px w-full max-w-8 bg-white" />
-            <span class="flex-shrink-0">Tapi kenapa?</span>
-          </div>
+          <SectionTitle data-aos="fade-right" text="Tapi kenapa?" type="line" color="white" />
           <SectionTitle data-aos="fade-up" data-aos-delay="300" text="Inilah Manfaat Implementasi AI dengan Usaha Anda" class="max-w-6xl"/>
           <div class="pt-12">
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:grid-rows-2 sm:grid-flow-col sm:grid-cols-none lg:grid-flow-row lg:grid-cols-2 lg:grid-rows-none">
@@ -213,10 +204,7 @@
     </div>
     <div class="section testimonial bg-gradient-to-br from-white via-gray-400 to-gray-100">
       <div class="container py-24">
-        <div data-aos="fade-right" class="flex items-center gap-2">
-          <div class="flex-shrink-0 h-px w-full max-w-8 bg-gray-900" />
-          <span class="flex-shrink-0">Jangan ragu untuk memilih kami</span>
-        </div>
+        <SectionTitle data-aos="fade-right" text="Jangan ragu untuk memilih kami" type="line" />
         <SectionTitle data-aos="fade-up" data-aos-delay="300" text="Buktikan Sendiri Apa yang Client Kami Katakan" class="max-w-6xl"/>
         <div class="flex flex-wrap items-start justify-center pt-12 -m-2">
           <div v-for="(t, i) in testimonialStore.all" :key="i" data-aos="fade-up" :data-aos-delay="(100 * i) + 450" class="flex-shrink-0 h-full w-full p-2 sm:w-1/2 md:w-1/3">
@@ -264,7 +252,7 @@ const contactStore = useContactStore()
 const serviceStore = useServiceStore()
 const benefitStore = useBenefitStore()
 const testimonialStore = useTestimonialStore()
-const sectionService = ref()
+const sectionPackage = ref()
 
 onMounted(() => {
   if (!contactStore.all) {
