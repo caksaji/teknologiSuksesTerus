@@ -1,7 +1,5 @@
 <template>
-  <SkeletonBlock v-if="props.showSkeleton" :class="['flex-shrink-0 h-9 rounded-xl', skeletonWidth]" />
   <button
-    v-else
     v-wave
     class="inline-block flex-shrink-0 relative text-center align-middle whitespace-nowrap no-underline outline-none cursor-pointer transform duration-300 group focus:ring focus:ring-opacity-90 focus:ring-offset-2 active:scale-90"
     :class="{
@@ -41,11 +39,7 @@
 </template>
 
 <script setup>
-import SkeletonBlock from '~/components/partial/SkeletonBlock'
-
 const props = defineProps({
-  showSkeleton: { type: Boolean, default: false },
-  skeletonWidth: { type: String, default: null },
   size: { type: String, default: null }, // null, sm, lg
   round: { type: Boolean, default: false },
   block: { type: Boolean, default: false },

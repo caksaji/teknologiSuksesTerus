@@ -6,7 +6,7 @@
         Internet Terputus
       </div>
       <div>
-        Ups, sepertinya koneksi internet kamu terputus. Coba periksa koneksi internet kamu (mobile data / wifi).
+        Ups, sepertinya koneksi internet anda terputus. Coba periksa koneksi internet anda (mobile data / wifi).
         <div class="flex space-x-1 pt-2">
           <div class="flex-shrink-0 pt-0.5">
             Lalu

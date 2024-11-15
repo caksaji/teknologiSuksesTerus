@@ -8,15 +8,15 @@
             :key="i"
             v-wave
             tabindex="0"
-            class="flex flex-shrink-0 items-center justify-center p-4 rounded-full outline-0 ring-offset-2 ring-green-500 ring-offset-gray-900 cursor-pointer duration-300 focus:ring lg:flex-col click-effect"
-            :class="{ 'bg-green-500': route.path === m.link, 'hover:bg-green-500/25 focus:bg-green-500/25': route.path !== m.link }"
+            class="flex flex-shrink-0 items-center justify-center p-4 rounded-full outline-0 ring-offset-2 ring-prime-500 ring-offset-gray-900 cursor-pointer duration-300 focus:ring lg:flex-col click-effect"
+            :class="[m.link === 'login' ? 'bg-prime-500' : ' hover:bg-prime-500/25 focus:bg-prime-500/25']"
             @click="clickNavbar(m.link)"
             @keydown.enter="clickNavbar(m.link)"
           >
-            <IconSvg :name="m.icon" class="h-6 w-6" />
-            <div class="overflow-hidden duration-300 whitespace-nowrap lg:hidden" :class="{ 'w-20 pl-4': route.path === m.link, 'w-0 pl-0': route.path !== m.link }">
-              {{ m.name }}
-            </div>
+            <IconSvg v-if="m.link !== 'login'" :name="m.icon" class="h-6 w-6" />
+            <template v-else>
+              Masuk
+            </template>
           </div>
         </div>
       </div>
@@ -361,12 +361,12 @@ const sectionHero = ref()
 const sectionAbout = ref()
 const sectionPackage = ref()
 const sectionContact = ref()
-const route = useRoute()
 const menu = [
   { name: 'Beranda', link: 'sectionHero', icon: 'home' },
   { name: 'Tentang', link: 'sectionAbout', icon: 'question-mark' },
   { name: 'Layanan', link: 'sectionPackage', icon: 'view-grid' },
-  { name: 'Kontak', link: 'sectionContact', icon: 'phone' }
+  { name: 'Kontak', link: 'sectionContact', icon: 'phone' },
+  { name: 'Masuk', link: 'login', icon: 'phone' }
 ]
 
 onMounted(() => {
@@ -386,7 +386,7 @@ onMounted(() => {
 
 const clickNavbar = (link) => {
   if (link === 'login') {
-    alert('Login & register')
+    navigateTo('/masuk')
   }
   else {
     const index = menu.findIndex(i => i.link === link)

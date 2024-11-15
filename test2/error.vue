@@ -6,7 +6,7 @@
         {{ error.statusCode }}
       </div>
       <div>
-        Ups, sepertinya kamu terlalu giat dan akhirnya tersesat.
+        Ups, sepertinya anda terlalu giat dan akhirnya tersesat.
         <div class="space-y-1 pt-2">
           <div v-for="(step, index) in resolveStep404" :key="index" class="flex space-x-2">
             <div class="flex-shrink-0 h-2 w-2 rounded-full mt-2.5 bg-gray-900" />
