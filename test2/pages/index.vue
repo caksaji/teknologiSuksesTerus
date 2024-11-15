@@ -1,6 +1,27 @@
 <template>
   <div>
-    <div class="section hero pt-4 bg-gray-900 text-white">
+    <div data-aos="fade-up" class="flex justify-center fixed bottom-4 left-0 w-full z-10 lg:w-auto lg:top-4 lg:bottom-auto lg:left-4">
+      <div class="border border-white rounded-full bg-gray-900 text-white">
+        <div class="flex p-1 items-center justify-between lg:flex-col">
+          <div
+            v-for="(m, i) in menu"
+            :key="i"
+            v-wave
+            tabindex="0"
+            class="flex flex-shrink-0 items-center justify-center p-4 rounded-full outline-0 ring-offset-2 ring-green-500 ring-offset-gray-900 cursor-pointer duration-300 focus:ring lg:flex-col click-effect"
+            :class="{ 'bg-green-500': route.path === m.link, 'hover:bg-green-500/25 focus:bg-green-500/25': route.path !== m.link }"
+            @click="clickNavbar(m.link)"
+            @keydown.enter="clickNavbar(m.link)"
+          >
+            <IconSvg :name="m.icon" class="h-6 w-6" />
+            <div class="overflow-hidden duration-300 whitespace-nowrap lg:hidden" :class="{ 'w-20 pl-4': route.path === m.link, 'w-0 pl-0': route.path !== m.link }">
+              {{ m.name }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div ref="sectionHero" class="section hero pt-4 bg-gray-900 text-white">
       <div class="container">
         <div data-aos="fade-up" class="relative pt-48 pb-12 px-4 rounded-xl overflow-hidden bg-prime-500">
           <div class="absolute top-0 left-0 h-full w-full bg-cover bg-center bg-no-repeat mix-blend-color-burn" :style="{ backgroundImage: 'url(/img/illustration/hero.jpeg)' }" />
@@ -35,7 +56,7 @@
         </div>
       </div>
     </div>
-    <div class="section about bg-gray-900 text-white">
+    <div ref="sectionAbout" class="section about bg-gray-900 text-white">
       <div class="container py-24">
         <div class="flex flex-col gap-8 justify-between pt-24 border-t border-dashed border-gray-600 sm:flex-row sm:items-end">
           <div class="hidden -space-x-20 sm:flex">
@@ -260,6 +281,69 @@
         </div>
       </div>
     </div>
+    <div ref="sectionContact" class="section contact bg-gradient-to-tr from-prime-600 via-prime-800 to-prime-600 text-white text-center">
+      <div class="container space-y-4 py-24">
+        <div>
+          Butuh diskusi lebih lanjut?
+        </div>
+        <SectionTitle text="Mari Diskusikan Kebutuhan Anda" />
+        <div class="flex justify-center">
+          <div class="relative">
+            <div class="absolute top-0 left-0 h-full w-full border-2 border-white rounded-full blur-sm animate-ping" />
+            <SpButton
+              color="white"
+              size="lg"
+              border
+              round
+              class="uppercase"
+              @click="$startDiscuss"
+             >
+              Sekarang
+            </SpButton>
+          </div>
+        </div>
+        <div class="pt-12">
+          <div class="flex gap-4 justify-center pt-12 border-t border-white/50">
+            <SpButton
+              v-if="contactStore.all?.linkedin"
+              color="white"
+              icon-only
+              border
+              round
+              @click="openLink(contactStore.all.linkedin)"
+            >
+              <template #icon>
+                <IconSvg name="linkedin" class="h-5 w-5" />
+              </template>
+            </SpButton>
+            <SpButton
+              v-if="contactStore.all?.x"
+              color="white"
+              icon-only
+              border
+              round
+              @click="openLink(contactStore.all.x)"
+            >
+              <template #icon>
+                <IconSvg name="x" class="h-5 w-5" />
+              </template>
+            </SpButton>
+            <SpButton
+              v-if="contactStore.all?.instagram"
+              color="white"
+              icon-only
+              border
+              round
+              @click="openLink(contactStore.all.instagram)"
+            >
+              <template #icon>
+                <IconSvg name="instagram" class="h-5 w-5" />
+              </template>
+            </SpButton>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -273,7 +357,17 @@ const contactStore = useContactStore()
 const packageStore = usePackageStore()
 const benefitStore = useBenefitStore()
 const testimonialStore = useTestimonialStore()
+const sectionHero = ref()
+const sectionAbout = ref()
 const sectionPackage = ref()
+const sectionContact = ref()
+const route = useRoute()
+const menu = [
+  { name: 'Beranda', link: 'sectionHero', icon: 'home' },
+  { name: 'Tentang', link: 'sectionAbout', icon: 'question-mark' },
+  { name: 'Layanan', link: 'sectionPackage', icon: 'view-grid' },
+  { name: 'Kontak', link: 'sectionContact', icon: 'phone' }
+]
 
 onMounted(() => {
   if (!contactStore.all) {
@@ -290,5 +384,25 @@ onMounted(() => {
   }
 })
 
+const clickNavbar = (link) => {
+  if (link === 'login') {
+    alert('Login & register')
+  }
+  else {
+    const index = menu.findIndex(i => i.link === link)
+    if (index === 0) {
+      sectionHero.value.scrollIntoView()
+    }
+    else if (index === 1) {
+      sectionAbout.value.scrollIntoView()
+    }
+    else if (index === 2) {
+      sectionPackage.value.scrollIntoView()
+    }
+    else if (index === 3) {
+      sectionContact.value.scrollIntoView()
+    }
+  }
+}
 const openLink = (link) => window.open(link)
 </script>
