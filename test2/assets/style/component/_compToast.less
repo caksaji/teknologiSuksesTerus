@@ -1,0 +1,10 @@
+.v-toast.v-toast--top {
+  @apply space-y-2 p-2;
+  .v-toast__item {
+    @apply rounded-md mb-0 first:mt-0;
+    min-height: unset;
+    &.v-toast__item--success { @apply bg-prime-600; }
+    &.v-toast__item--error { @apply bg-red-500; }
+    .v-toast__text { @apply py-2 px-4; }
+  }
+}
