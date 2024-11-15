@@ -5,7 +5,7 @@
         <div data-aos="fade-up" class="relative pt-48 pb-12 px-4 rounded-xl overflow-hidden bg-prime-500">
           <div class="absolute top-0 left-0 h-full w-full bg-cover bg-center bg-no-repeat mix-blend-color-burn" :style="{ backgroundImage: 'url(/img/illustration/hero.jpeg)' }" />
           <div data-aos="fade-up" data-aos-delay="150" class="relative w-52 text-xl font-medium">
-            Kombinasi yang powerful antara data science & software development
+            Sederhanakan pengelolaan bisnis anda dengan aplikasi ERP terintegrasi
           </div>
         </div>
       </div>
@@ -14,9 +14,9 @@
           <div>
             <div data-aos="fade-right" data-aos-delay="400" class="flex items-center gap-2">
               <div class="flex-shrink-0 h-px w-full max-w-8 bg-white" />
-              <span class="flex-shrink-0">Singkatnya, kami spesialis</span>
+              <span class="flex-shrink-0">Singkatnya, anda bisa</span>
             </div>
-            <SectionTitle data-aos="fade-up" data-aos-delay="550" text="Data Science dan Pengembangan Produk AI" class="max-w-4xl" />
+            <SectionTitle data-aos="fade-up" data-aos-delay="550" text="Memantau Keuntungan dan Kesediaan Bisnis Anda Secara Real-Time" class="max-w-4xl" />
           </div>
           <div data-aos="fade-right" data-aos-delay="850" class="flex">
             <SpButton color="white" size="lg" border round @click="sectionService.scrollIntoView()">
@@ -93,7 +93,7 @@
               </SpButton>
             </div>
             <div data-aos="fade-right" data-aos-delay="600">
-              Kami menciptakan produk berdasarkan data science dan diperkuat dengan machine learning untuk memberikan solusi atas masalah yang ada
+              Kami menciptakan produk berdasarkan data science untuk membantu anda menemukan solusi atas masalah yang ada.
             </div>
           </div>
         </div>
