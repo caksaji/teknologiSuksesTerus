@@ -96,22 +96,43 @@
         </div>
       </div>
     </div>
-    <div ref="sectionPackage" class="section service bg-gradient-to-br from-white via-prime-200 to-gray-100">
+    <div ref="sectionPackage" class="section package bg-gradient-to-br from-white via-prime-200 to-gray-100">
       <div class="container relative py-24">
         <OrnamentDotCircle color="gray-900" class="absolute top-12 right-0 transform translate-x-1/3 opacity-10" />
         <div class="relative">
           <SectionTitle data-aos="fade-right" text="Kami menawarkan" type="line" />
-          <SectionTitle data-aos="fade-up" data-aos-delay="300" text="Inilah Solusi yang Kami Tawarkan atas Masalah Anda" class="max-w-6xl"/>
-          <div data-aos="fade-up" class="flex gap-4 flex-wrap w-full pt-12 md:flex-nowrap sm:gap-0">
-            <div v-for="(s, i) in serviceStore.all" :key="i" class="w-full transform duration-300 group sm:w-1/2 md:w-1/4 md:hover:w-2/4">
+          <SectionTitle data-aos="fade-up" data-aos-delay="300" text="Solusi yang dapat Anda Pilih Sesuai Kebutuhan" class="max-w-6xl"/>
+          <div data-aos="fade-up" class="flex gap-4 flex-wrap justify-center w-full pt-12 md:flex-nowrap sm:gap-0">
+            <div v-for="(p, i) in packageStore.all" :key="i" class="w-full transform duration-300 group sm:w-1/2 md:w-1/3 md:hover:w-2/3">
               <div class="flex gap-4 flex-col justify-between h-full w-full pt-12 pb-4 px-4 border border-gray-900 rounded-xl text-white" :class="{ 'bg-gray-500': i === 0, 'bg-gray-900': i === 1, 'bg-prime-700': i === 2, 'bg-prime-500': i === 3 }">
                 <div class="space-y-4">
-                  <div class="text-3xl uppercase font-medium md:text-2xl" style="word-spacing: .5ch;">
-                    {{ s.name }}
+                  <div class="text-3xl uppercase font-medium md:text-xl" style="word-spacing: .5ch;">
+                    {{ p.name }}
                   </div>
-                  <div class="relative h-28">
+                  <div class="relative h-32 sm:h-36">
                     <div class="absolute top-0 left-0 transform duration-300 origin-top-left group-hover:scale-100 md:scale-0">
-                      {{ s.description }}
+                      <div class="text-lg font-bold">
+                        <span class="py-0.5 px-2 rounded-full text-gray-900 bg-white">
+                          Keuntungan:
+                        </span>
+                      </div>
+                      <div class="pt-2 text-lg">
+                        <div v-for="(it, ix) in p.pros" :key="ix" class="flex w-full space-x-2">
+                          <div class="h-2 w-2 rounded-full mt-2.5 bg-white" />
+                          <div>
+                            {{ it }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div>
+                      Berlangganan
+                    </div>
+                    <span class="text-5xl font-semibold md:text-4xl lg:text-5xl">{{ p.price }}</span><span class="text-xl md:hidden lg:inline">/bulan</span>
+                    <div class="hidden md:block lg:hidden">
+                      per bulan
                     </div>
                   </div>
                 </div>
@@ -249,7 +270,7 @@ import IconSvg from '~/components/partial/IconSvg'
 import OrnamentDotCircle from '~/components/partial/OrnamentDotCircle'
 
 const contactStore = useContactStore()
-const serviceStore = useServiceStore()
+const packageStore = usePackageStore()
 const benefitStore = useBenefitStore()
 const testimonialStore = useTestimonialStore()
 const sectionPackage = ref()
@@ -258,8 +279,8 @@ onMounted(() => {
   if (!contactStore.all) {
     contactStore.getAll()
   }
-  if (serviceStore.all.length < 1) {
-    serviceStore.getAll()
+  if (packageStore.all.length < 1) {
+    packageStore.getAll()
   }
   if (benefitStore.all.length < 1) {
     benefitStore.getAll()
